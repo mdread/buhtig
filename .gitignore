@@ -17,4 +17,4 @@ project/plugins/project/
 .worksheet
 .project
 .classpath
-
+.cache
