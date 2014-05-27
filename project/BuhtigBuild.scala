@@ -10,8 +10,10 @@ object BuhtigBuild extends Build {
       name := "buhtig",
       organization := "net.caoticode",
       version := "0.1-SNAPSHOT",
-      scalaVersion := "2.11.1"
-      // add other settings here
+      scalaVersion := "2.11.1",
+        
+      // deps
+      libraryDependencies += "net.databinder.dispatch" %% "dispatch-core" % "0.11.1"
     )
   )
 }
