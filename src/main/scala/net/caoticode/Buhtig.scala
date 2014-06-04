@@ -29,15 +29,15 @@ class GHBuilder(request: Req) extends Dynamic {
     new GHBuilder(req)
   }
 
-  def get = Http(request OK as.String)
-
-  def getOpt = {
-    val res = Http(request OK as.String).option
+  def async = Http(request OK as.String)
+  
+  def sync = {
+    val res = Http(request OK as.String)
     res()
   }
-
-  def getSync = {
-    val res = Http(request OK as.String)
+  
+  def syncOpt = {
+    val res = Http(request OK as.String).option
     res()
   }
 
