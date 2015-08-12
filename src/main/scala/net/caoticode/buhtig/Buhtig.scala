@@ -1,6 +1,8 @@
-package net.caoticode
+package net.caoticode.buhtig
 
-import dispatch._, Defaults._
+import dispatch._
+import dispatch.Defaults._
+import scala.language.dynamics
 
 class Buhtig(token: String) {
 
