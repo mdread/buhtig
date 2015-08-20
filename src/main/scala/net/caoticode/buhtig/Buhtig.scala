@@ -2,7 +2,10 @@ package net.caoticode.buhtig
 
 import dispatch._
 import dispatch.Defaults._
-import scala.language.dynamics
+
+/**
+ * @author Daniel Camarda <maniacal.dread@gmail.com>
+ */
 
 class Buhtig(token: String) {
 
@@ -32,12 +35,12 @@ class GHBuilder(request: Req) extends Dynamic {
   }
 
   def async = Http(request OK as.String)
-  
+
   def sync = {
     val res = Http(request OK as.String)
     res()
   }
-  
+
   def syncOpt = {
     val res = Http(request OK as.String).option
     res()
