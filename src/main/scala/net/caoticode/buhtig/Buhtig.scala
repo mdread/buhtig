@@ -23,7 +23,9 @@ class GHBuilder(request: Req) extends Dynamic {
   def selectDynamic(name: String) = new GHBuilder(request / name)
 
   def applyDynamic(name: String)(args: Any*) = {
-    val req = args.foldLeft(request / name) { case (z, e) => z / e.toString }
+    val seed = if(name == "apply") request else request / name
+    
+    val req = args.foldLeft(seed) { case (z, e) => z / e.toString }
 
     new GHBuilder(req)
   }
