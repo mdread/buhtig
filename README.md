@@ -4,16 +4,29 @@ Scala client for **Github** rest API. The main goal is to be damn easy, and to a
 
 ## why?
 
+The idea is to have a basic utility to interact with [Github REST API](https://developer.github.com/), that does not require you to study a new API. If you already know github REST API you already know how to use this library, and because it is no more than a utility to help you build requests, if the API changes you don't need to wait for a new version to be released.
+
 ## Installation
 
 ### sbt
+
+```
+libraryDependencies += "net.caoticode.buhtig" %% "buhtig" % "0.1.0"
+```
+
+The library is cross compiled for scala 2.10 / 2.11
+
 ### sources
 
-    :> git clone ...
-    :> cd buhtig
-    :> sbt package
+```bash
+:> git clone https://github.com/mdread/buhtig.git
+:> cd buhtig
+:> sbt package
+```
 
-the generated jar file can be found under target/scala_{version}
+The generated jar file can be found under target/scala_{version} (don't forget to add [Dispatch](http://github.com/dispatch/reboot) as dependency).
+
+To execute tests create a file named *github.token* under *src/test/resources* with a valid github api token.
 
 ## Usage
 
