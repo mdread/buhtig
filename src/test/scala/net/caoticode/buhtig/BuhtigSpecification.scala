@@ -29,7 +29,7 @@ class BuhtigSpecification extends Specification { def is = s2"""
    
    val token = loadToken()
    val buhtig = new Buhtig(token)
-   val client = buhtig.client
+   val client = buhtig.syncClient
 
    def baseUri = buhtig.github.toRequest.getUrl must be_==("https://api.github.com")
    def authToken = buhtig.github.toRequest.getHeaders.getFirstValue("Authorization") must be_==(s"token $token")
@@ -49,7 +49,7 @@ class BuhtigSpecification extends Specification { def is = s2"""
 
    // utility methods
    
-   def req(g: GHBuilder) =  {
+   def req(g: GHBuilder[_]) =  {
      val field = g.getClass.getDeclaredField("request")
      field.setAccessible(true)
      field.get(g).asInstanceOf[dispatch.Req].toRequest
