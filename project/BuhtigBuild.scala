@@ -9,7 +9,7 @@ object BuhtigBuild extends Build {
     settings = Project.defaultSettings ++ Seq(
       name := "buhtig",
       organization := "net.caoticode.buhtig",
-      version := "0.1.0",
+      version := "0.2.0",
       scalaVersion := "2.11.7",
       crossScalaVersions := Seq("2.10.5", "2.11.7"),
       homepage      := Some(url("https://github.com/mdread/buhtig")),

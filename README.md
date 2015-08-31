@@ -11,7 +11,7 @@ The idea is to have a basic utility to interact with [Github REST API](https://d
 ### sbt
 
 ```
-libraryDependencies += "net.caoticode.buhtig" %% "buhtig" % "0.1.0"
+libraryDependencies += "net.caoticode.buhtig" %% "buhtig" % "0.2.0"
 ```
 
 The library is cross compiled for scala 2.10 / 2.11
