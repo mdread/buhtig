@@ -32,28 +32,29 @@ To execute tests create a file named *github.token* under *src/test/resources* w
 
 ```scala
 val buhtig = new Buhtig(token)
-val github = buhtig.client
+val syncClient = buhtig.syncClient
+val asyncClient = buhtig.asyncClient
 
 // get information about this repository ;)
-github.repos.mdread.buhtig.sync
+syncClient.repos.mdread.buhtig.get
 
 // same but with user and repo as parameters
-github.repos("mdread", "buhtig").sync
+syncClient.repos("mdread", "buhtig").get
 
 // get future
-github.repos(user, repo).async
+asyncClient.repos(user, repo).get
 
 // get json content as a string (syncronously)
-github.repos("mdread", "buhtig").sync
+syncClient.repos("mdread", "buhtig").get
 
 // get an option containing the json response or None (syncronously)
-github.repos("mdread", "buhtig").syncOpt
+syncClient.repos("mdread", "buhtig").getOpt
 
 // adding query parameters
-github.search.repositories ? ("q" -> "buhtig", "language" -> "scala") sync
+syncClient.search.repositories ? ("q" -> "buhtig", "language" -> "scala") get
 
 // example of getting the content of a future with for-expressions
-for(repo <- github.repos("mdread", "buhtig").async) {
+for(repo <- asyncClient.repos("mdread", "buhtig").get) {
     println(repo)
 }
 
