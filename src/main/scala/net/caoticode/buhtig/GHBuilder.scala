@@ -30,6 +30,28 @@ trait GHBuilder[T <: GHBuilder[T]] extends Dynamic {
     construct(req)
   }
 
+  def POST[S](value: S)(implicit converter: S => String) = {
+    val req = request.POST.setContentType("application/json", "UTF-8")
+    
+    construct(req.setBody(converter(value)))
+  }
+  
+  def PUT[S](value: S)(implicit converter: S => String) = {
+    val req = request.PUT.setContentType("application/json", "UTF-8")
+    
+    construct(req.setBody(converter(value)))
+  }
+  
+  def PATCH[S](value: S)(implicit converter: S => String) = {
+    val req = request.PATCH.setContentType("application/json", "UTF-8")
+    
+    construct(req.setBody(converter(value)))
+  }
+  
+  def DELETE = construct(request.DELETE)
+  
+  def HEAD = construct(request.HEAD)
+  
   // def fullUrl(urlStr: String) = new GHBuilder(url(urlStr) <:< authHeader)
 }
 
