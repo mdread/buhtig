@@ -52,7 +52,11 @@ trait GHBuilder[T <: GHBuilder[T]] extends Dynamic {
   
   def HEAD = construct(request.HEAD)
   
-  // def fullUrl(urlStr: String) = new GHBuilder(url(urlStr) <:< authHeader)
+  def fromUrl(urlStr: String) = {
+    val authHeader = Map("Authorization" -> request.toRequest.getHeaders.getFirstValue("Authorization"))
+    
+    construct(url(urlStr).secure <:< authHeader)
+  }
 }
 
 class SyncClient(val request: Req) extends GHBuilder[SyncClient] {
