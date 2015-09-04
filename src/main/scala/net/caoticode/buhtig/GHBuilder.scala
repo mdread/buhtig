@@ -24,6 +24,8 @@ trait GHBuilder[T <: GHBuilder[T]] extends Dynamic {
     construct(req)
   }
 
+  def /(fragment: String) = construct(request / fragment)
+  
   def ?(params: (String, String)*) = {
     val req = params.foldLeft(request) { case (z, e) => z.addQueryParameter(e._1, e._2) }
 
