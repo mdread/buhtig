@@ -22,6 +22,7 @@ class BuhtigSpecification extends Specification { def is = s2"""
    
  GHBuilder methods
    ? - should add query parameters to the request                       $ghb1
+   / - should compose uri fragments                                     $ghb2
    
  Tests for known bugs
    issue #1 (https://github.com/mdread/buhtig/issues/1)                 $bug1
@@ -44,7 +45,8 @@ class BuhtigSpecification extends Specification { def is = s2"""
      
      req(client.search.repositories ? ("q" -> "tetris", "sort" -> "star")).getQueryParams() must be_==(fm)
    }
-   
+   def ghb2 = req(client / "users" / "mdread").getUrl must be_==("https://api.github.com/users/mdread")
+
    def bug1 = req(client("users", "mdread")).getUrl must be_==("https://api.github.com/users/mdread")
 
    // utility methods
